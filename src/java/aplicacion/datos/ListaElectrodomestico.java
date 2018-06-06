@@ -54,6 +54,17 @@ public class ListaElectrodomestico implements Serializable{
         }
         return listaElectrodomestico;
     }    
+    
+    public Electrodomestico buscarElectrodomestico(String codigoBuscado){
+        Electrodomestico aux=new Electrodomestico();
+        for(Electrodomestico e:listaElectrodomestico){
+            if(e.getCodigo().equals(codigoBuscado)){
+                aux=e;
+            }
+        }
+        return aux;
+    }
+    
     /**
      * @return the listaElectrodomestico
      */

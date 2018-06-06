@@ -34,6 +34,8 @@ public class ElectrodomesticoFormBean implements Serializable{
     private String modelo;
     private double prec;
     private int stock;
+    private String codBuscar;
+    private Electrodomestico elecAux;
 
     /**
      * Creates a new instance of ElectrodomesticoFormBean
@@ -65,17 +67,25 @@ public class ElectrodomesticoFormBean implements Serializable{
     }
     
     public void modificarElectrodomestico(){
-        setListaAux(listadoElectrodomestico.modificarElectrodomestico(unElectrodomestico));
+        setListaAux(getListadoElectrodomestico().modificarElectrodomestico(getUnElectrodomestico()));
     }
     
     public void eliminarElectrodomestico(){
-        setListaAux(listadoElectrodomestico.eliminarElectrodomestico(unElectrodomestico));
+        setListaAux(getListadoElectrodomestico().eliminarElectrodomestico(getUnElectrodomestico()));
 
     }
     
+    public void buscarElectrodomestico(){
+        setElecAux(getListadoElectrodomestico().buscarElectrodomestico(codBuscar));
+    }
+    
     public void limpiarLista(){
-        listaAux=new ArrayList();
-        listadoElectrodomestico=new ListaElectrodomestico();
+        setListaAux((ArrayList<Electrodomestico>) new ArrayList());
+        setListadoElectrodomestico(new ListaElectrodomestico());
+    }
+    
+    public void limpiarBuscar(){
+        setElecAux(new Electrodomestico());
     }
     
     /**
@@ -245,6 +255,34 @@ public class ElectrodomesticoFormBean implements Serializable{
      */
     public void setDisponible(String disponible) {
         this.disponible = disponible;
+    }
+
+    /**
+     * @return the codBuscar
+     */
+    public String getCodBuscar() {
+        return codBuscar;
+    }
+
+    /**
+     * @param codBuscar the codBuscar to set
+     */
+    public void setCodBuscar(String codBuscar) {
+        this.codBuscar = codBuscar;
+    }
+
+    /**
+     * @return the elecAux
+     */
+    public Electrodomestico getElecAux() {
+        return elecAux;
+    }
+
+    /**
+     * @param elecAux the elecAux to set
+     */
+    public void setElecAux(Electrodomestico elecAux) {
+        this.elecAux = elecAux;
     }
     
 }

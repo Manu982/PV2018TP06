@@ -10,7 +10,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>Facelets Template</title>
+        <title>Alta de Electrodomesticos</title>
     </h:head>
 
     <h:body>
@@ -21,9 +21,13 @@
                     <p:growl id="mensaje" showDetail="true"/>
                     <p:menubar>
                         <p:submenu label="Electrodomesticos">
-                            <p:menuitem value="Agregar Electrodomesticos"/>
-                            <p:menuitem value="Buscar Electrodomesticos"/>
-                            <p:menuitem value="Modificar Electrodomesticos"/>
+                            <p:menuitem value="Agregar Electrodomesticos" action="/Electrodomesticos" />
+                            <p:menuitem value="Buscar Electrodomesticos" oncomplete="PF('buscarElec').show()"
+                                             update=":frmBuscarElec"/>
+                            <p:menuitem value="Modificar Electrodomesticos" 
+                                        oncomplete="PF('modificarElec').show()"
+                                        update=":frmModificarElec"
+                                        actionListener="#{electrodomesticoFormBean.establecerElectrodomestico(cadaElectro)}"/>
                         </p:submenu>
                         <p:menuitem value="Datos Personales"/>
                         <f:facet name="options">

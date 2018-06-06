@@ -176,6 +176,58 @@
                             </p:panelGrid>
                         </h:form>
                     </p:dialog>
+                    <p:dialog id="dlgBuscarElec"
+                              widgetVar="buscarElec"
+                              header="Buscar Electrodomestico"
+                              resizable="false"
+                              showEffect="explode"
+                              width="1000"
+                              hideEffect="explode" modal="true">
+                        <h:form id="frmBuscarElec">
+                            <p:panelGrid id="tblBuscar" columns="1">
+                                <h:panelGrid id="Buscar" columns="4">
+                                <p:outputLabel for="codigox" value="Codigo de Electrodometico:"/>
+                                <p:inputText id="codigox" required="true"
+                                             value="#{electrodomesticoFormBean.codBuscar}"/>
+                                <p:commandButton id="btnBuscarLibro" value="Buscar"
+                                                update=":frmBuscarElec"
+                                                actionListener="#{electrodomesticoFormBean.buscarElectrodomestico()}"/>
+                    <p:commandButton id="btnCerrarBuscarAuto" value="Salir"
+                                     oncomplete="PF('buscarElec').hide()"
+                                     actionListener="#{electrodomesticoFormBean.limpiarBuscar()}"/>
+                    </h:panelGrid>
+                                <p:dataTable id="dtTbElecBuscado" value="#{electrodomesticoFormBean.elecAux}" emptyMessage="No encontrado">
+                        <p:column headerText="Codigo" style="width: 100px">
+                            <p:outputLabel value="#{electrodomesticoFormBean.elecAux.codigo}"/>
+                                </p:column>
+                                <p:column headerText="Tipo" style="width: 100px">
+                                    <p:outputLabel value="#{electrodomesticoFormBean.elecAux.tips}"/>
+                                </p:column>
+                                <p:column headerText="Marca" style="width: 100px">
+                                    <p:outputLabel value="#{electrodomesticoFormBean.elecAux.marca.nombre}"/>
+                                </p:column>
+                                <p:column headerText="Modelo" style="width: 100px">
+                                    <p:outputLabel value="#{electrodomesticoFormBean.elecAux.modelo}"/>
+                                </p:column>
+                                <p:column headerText="Precio" style="width: 100px">
+                                    <p:outputLabel value="#{electrodomesticoFormBean.elecAux.precio}"/>
+                                </p:column>
+                                <p:column headerText="Fecha Ingreso" style="width: 100px">
+                                    <p:outputLabel value="#{electrodomesticoFormBean.elecAux.fecha}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    </p:outputLabel>
+                                </p:column>
+                                <p:column headerText="Stock" style="width: 100px">
+                                    <p:outputLabel value="#{electrodomesticoFormBean.elecAux.stock}"/>
+                                </p:column>
+                                <p:column headerText="Disponibilidad" style="width: 100px">
+                                    <p:outputLabel value="#{electrodomesticoFormBean.elecAux.disponible}"/>
+                                </p:column>
+                    </p:dataTable>
+                </p:panelGrid>
+                
+            </h:form>    
+        </p:dialog>
                 </div>
             </ui:define>
         </ui:composition>
